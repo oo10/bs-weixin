@@ -1,0 +1,54 @@
+﻿{
+  "button": [
+    {
+      "name": "🙊污污污污",
+      "sub_button": [
+        {
+          "type": "view",
+          "name": "🙈博客",
+          "url": "http://blog.yangqiwang.cn"
+        },
+        {
+          "type": "view",
+          "name": "🙉一百层!",
+          "url": "http://man.yangqiwang.cn"
+        }
+      ]
+    },
+    {
+      "name": "🔞工具合辑",
+      "sub_button": [
+        {
+          "type": "view",
+          "name": "🈵四/六级",
+          "url": "http://cet.yangqiwang.cn"
+        },
+        {
+          "type": "view",
+          "name": "🈵期末成绩",
+          "url": "http://grade.yangqiwang.cn"
+        },
+        {
+          "type": "view",
+          "name": "🔞后台系统",
+          "url": "yangqiwang.cn/vue-admin/"
+        }
+      ]
+    },
+    {
+      "name": "🙌绑定号码",
+      "sub_button": [
+        {
+          "type": "view",
+          "name": "🚶绑定手机号",
+          "url": "http://5a44cf07.ngrok.io/weixin/bindTel.html"
+        },
+        {
+          "type": "view",
+          "name": "🏃修改手机号",
+          "url": "http://5a44cf07.ngrok.io/weixin/bindTel.html"
+        }
+      ]
+    }
+  ]
+}

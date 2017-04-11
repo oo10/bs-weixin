@@ -37,21 +37,33 @@ module.exports = {
 
         //文本消息
         if(msgObj.msgtype === "text"){
-            if(msgObj.content === "1") {
+            
+            msgObj.content = msgObj.content.toString();
+
+            if(msgObj.content == "1") {
 
                 callback.call(scope, this.createResTextMsg(msgObj, WXConfig.MGS.hello));
 
-            }else if (msgObj.content.substring(0,3) === "四六级"){
+            }
+
+            else if(msgObj.content == "2") {
+
+                callback.call(scope, this.createResNewsMsg(msgObj));
+
+            }
+
+
+            else if (msgObj.content.substring(0,3) == "四六级"){
 
                 var _this = this,
-                    obj = msgObj.content.split('+'),
+                    obj = msgObj.content.split(' '),
                     name = encodeURI(obj[1]),
                     num = obj[2]
 
                 console.log('name:'+name,'num:'+num)
 
                 if(obj[1]==undefined){
-                    callback.call(scope, _this.createResTextMsg(msgObj,'请按照格式，回复四六级+姓名+学号查询成绩哦~'));
+                    callback.call(scope, _this.createResTextMsg(msgObj,'请按照格式，回复四六级 姓名 学号查询成绩哦~'));
                     return false;
                 }
 
@@ -129,17 +141,32 @@ module.exports = {
                     console.log("Got error: " + e.message);
                 }).end();
 
-            }else{
+            }
+
+            else{
                 callback.call(scope, this.createResTextMsg(msgObj, '-。- 您发送的是：'+msgObj.content));
             }
         }
 
+        //图片消息
         if(msgObj.msgtype === "image"){
             callback.call(scope, this.createResTextMsg(msgObj, '您发送了一张图片：<a href=\"'+msgObj.picurl+'\"> 浏览</a>'));
         }
 
+
+        //音频消息
         if(msgObj.msgtype === "voice"){
             callback.call(scope, this.createResTextMsg(msgObj, '您发送了一条语音，然而我并听不懂=￣ω￣='));
+        }
+
+        //推送消息
+        if(msgObj.msgtype === "event"){
+            if(msgObj.eventkey === 'wx_001' ){
+                callback.call(scope, this.createResNewsMsg(msgObj));
+            }
+            else{
+                callback.call(scope, this.createResTextMsg(msgObj, '改功能正在开发中，别急=￣ω￣='));
+            }
         }
 
 
@@ -159,6 +186,25 @@ module.exports = {
         res.Content = content;
 
         return this.JS2XML(res);
+    },
+
+    /**
+     *
+     * @param msg
+     * @param content
+     */
+    createResNewsMsg: function(msg, content){
+        var res = {};
+        res.ToUserName = msg.fromusername;
+        res.FromUserName  = msg.tousername;
+        res.CreateTime = new Date().getTime();
+        res.MsgType = 'news';
+        res.title = '四六级成绩查询网页版';
+        res.description = '或直接回复四六级 姓名 学号即可~';
+        res.picurl = 'https://img.alicdn.com/imgextra/i1/1876943437/TB2uW0qlCFjpuFjSszhXXaBuVXa_!!1876943437.jpg';
+        res.url = 'http://cet.yangqiwang.cn';
+
+        return this.news2xml(res);
     },
 
     /**
@@ -194,5 +240,26 @@ module.exports = {
         }
 
         return xml.join("");
+    },
+
+    news2xml: function (json) {
+        var xml =
+        '<xml>'+
+        '<ToUserName><![CDATA['+json.ToUserName+']]></ToUserName>'+
+        '<FromUserName><![CDATA['+json.FromUserName+']]></FromUserName>'+
+        '<CreateTime>'+json.CreateTime+'</CreateTime>'+
+        '<MsgType><![CDATA['+json.MsgType+']]></MsgType>'+
+        '<ArticleCount>1</ArticleCount>'+
+        '<Articles>'+
+        '<item>'+
+        '<Title><![CDATA['+json.title+']]></Title>'+
+        '<Description><![CDATA['+json.description+']]></Description>'+
+        '<PicUrl><![CDATA['+json.picurl+']]></PicUrl>'+
+        '<Url><![CDATA['+json.url+']]></Url>'+
+        '</item>'+
+        '</Articles>'+
+        '</xml>'
+
+        return xml;
     }
 };

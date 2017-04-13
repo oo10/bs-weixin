@@ -19,14 +19,14 @@
       "name": "🔞工具合辑",
       "sub_button": [
         {
-          "type": "view",
+          "type": "click",
           "name": "🈵四/六级",
-          "url": "http://cet.yangqiwang.cn"
+          "key": "wx_001"
         },
         {
           "type": "view",
           "name": "🈵期末成绩",
-          "url": "http://grade.yangqiwang.cn"
+          "key": "wx_002"
         },
         {
           "type": "view",
@@ -41,12 +41,12 @@
         {
           "type": "view",
           "name": "🚶绑定手机号",
-          "url": "http://5a44cf07.ngrok.io/weixin/bindTel.html"
+          "url": "http://yangqiwang.cn/weixin/bindTel.html"
         },
         {
-          "type": "view",
+          "type": "click",
           "name": "🏃修改手机号",
-          "url": "http://5a44cf07.ngrok.io/weixin/bindTel.html"
+          "key": "wx_003"
         }
       ]
     }

@@ -16,7 +16,12 @@ exports.WX = {
 };
 
 exports.MGS = {
-    subscribe: "=￣ω￣= 欢迎您关注 yqw 的公众号!",
+    subscribe: "=￣ω￣= \n" +
+    "欢迎您关注 yqw 的公众号!\n\n" +
+    "您可以回复相应的内容进入功能~\n" +
+    "2:查询<a href='http://cet.yangqiwang.cn'>四六级</a>成绩~\n"+
+    "3:绑定学号~\n"+
+    "4:系统后台~\n",
     hello: "=￣ω￣= 您好!"
 };
 

@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e1861a7-5280-42f8-a6a7-96acecdb4527" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/weixin/MessageHandler.js" afterPath="$PROJECT_DIR$/weixin/MessageHandler.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/menu.json" afterPath="$PROJECT_DIR$/conf/menu.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.js" afterPath="$PROJECT_DIR$/config.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,11 +18,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="380">
+              <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -47,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MessageHandler.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MessageHandler.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/weixin/MessageHandler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="39" column="12" lean-forward="false" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+            <state relative-caret-position="359">
+              <caret line="128" column="83" lean-forward="false" selection-start-line="128" selection-start-column="40" selection-end-line="128" selection-end-column="83" />
               <folding />
             </state>
           </provider>
@@ -101,7 +102,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>li</find>
       <find>liste</find>
       <find>listen</find>
       <find>80</find>
@@ -126,10 +126,11 @@
       <find>hello</find>
       <find>var s = 0; s &lt; rest.length; s += 3)</find>
       <find>checkValidate</find>
-      <find>cgi-bin/token?grant_type</find>
       <find>ACCESS_TOKEN_URL</find>
       <find>reloadAccessToken</find>
       <find>httpsPostData</find>
+      <find>cgi-bin/token?grant_type</find>
+      <find>subscribe</find>
       <find>access_token</find>
     </findStrings>
     <dirStrings>
@@ -150,11 +151,11 @@
         <option value="$PROJECT_DIR$/weixin/Util.js" />
         <option value="$PROJECT_DIR$/routes/activity.js" />
         <option value="$PROJECT_DIR$/weixin/HttpsUtil.js" />
-        <option value="$PROJECT_DIR$/config.js" />
         <option value="$PROJECT_DIR$/weixin/AccessToken.js" />
         <option value="$PROJECT_DIR$/../../secure" />
         <option value="$PROJECT_DIR$/../../nginx.conf" />
         <option value="$PROJECT_DIR$/weixin/MessageHandler.js" />
+        <option value="$PROJECT_DIR$/config.js" />
       </list>
     </option>
   </component>
@@ -409,15 +410,15 @@
       <workItem from="1490692958116" duration="8174000" />
       <workItem from="1490770109809" duration="576000" />
       <workItem from="1490774594768" duration="1225000" />
-      <workItem from="1491816680889" duration="20370000" />
+      <workItem from="1491816680889" duration="26608000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33197000" />
+    <option name="totallyTimeSpent" value="39435000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="1" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -794,14 +795,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../secure">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
@@ -828,8 +821,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/weixin/MessageHandler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="39" column="12" lean-forward="false" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+        <state relative-caret-position="359">
+          <caret line="128" column="83" lean-forward="false" selection-start-line="128" selection-start-column="40" selection-end-line="128" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
           <folding />
         </state>
       </provider>

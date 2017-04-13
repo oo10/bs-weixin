@@ -142,7 +142,7 @@ function initRouters(app){
     /**
      * 微信菜单进入的进行授权判断
      */
-    app.use('/weixin/*',function(req, res, next){
+    app.use('/weixin/activity/*',function(req, res, next){
         var openid = req.session.openid;
         console.log("openid exist ? " + openid);
         if(openid){

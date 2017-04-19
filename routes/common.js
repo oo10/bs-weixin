@@ -4,6 +4,7 @@
 
 module.exports = {
     '/bind\.html': function(){
+        console.log('init bind html')
         var tel = this.get("tel");
         var code = this.get("code");
         var openid = this.req.session.openid;

@@ -52,6 +52,61 @@ module.exports = {
 
             }
 
+            else if (msgObj.content.substring(0,3) == "普通话"){
+
+                var _this = this,
+                    obj = msgObj.content.split(' '),
+                    name = encodeURI(obj[1]),
+                    num = obj[2]
+
+                console.log('name:'+name,'num:'+num)
+
+                if(obj[1]==undefined || name=='' || num==''){
+                    callback.call(scope, _this.createResTextMsg(msgObj,'请按照格式，回复普通话 姓名 身份证号查询成绩哦~'));
+                    return false;
+                }
+
+                http.get("http://yangqiwang.cn/api-putonghua/?name="+name+"&num="+num, function(res) {
+                    console.log('STATUS: ' + res.statusCode);
+                    console.log('HEADERS: ' + JSON.stringify(res.headers));
+                    res.setEncoding('utf-8');
+                    res.on('data', function (body) {
+                        var body2 = JSON.parse(body)
+                        var con = ''
+                        console.log('BODY:', body2.data)
+                        if(!!body2.data){
+                            function allpro(obj){
+                                var title = '🈵 普通话成绩查询结果： \n\n'
+                                var value =''
+                                for(var key in obj){
+                                    //只遍历对象自身的属性，而不包含继承于原型链上的属性。
+                                    if (obj.hasOwnProperty(key) === true){
+                                        if(key=='出生日期：'){
+                                            value+=' \n'
+                                        }
+                                        else if(key=='照片：'){
+                                            value+=key+'<a href="'+obj[key]+'">点击查看</a> \n'
+                                        }
+                                        else{
+                                            value+=key+''+obj[key]+' \n'
+                                        }
+                                    }
+                                }
+                                con=title+value+'\n<a href="http://cet.yangqiwang.cn">查看更多</a>'
+                                return con;
+                            }
+                            callback.call(scope, _this.createResTextMsg(msgObj, allpro(body2.data)));
+                        }
+                        else {
+                            callback.call(scope, _this.createResTextMsg(msgObj, '-。- ' + body2.msg));
+                        }
+                    });
+                }).on('error', function(e) {
+                    console.log("Got error: " + e.message);
+                }).end();
+
+            }
+
 
             else if (msgObj.content.substring(0,3) == "四六级"){
 
@@ -80,7 +135,7 @@ module.exports = {
                         }
                         else {
                             function allpro(obj,obj2){
-                                var title = '四六级成绩查询结果： \n\n'
+                                var title = '🈵 四六级成绩查询结果： \n\n'
                                 var value =''
                                 var values1 = '';
                                 var values2 = '';

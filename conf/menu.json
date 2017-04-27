@@ -24,14 +24,14 @@
           "key": "wx_001"
         },
         {
-          "type": "view",
+          "type": "click",
           "name": "🈵期末成绩",
           "key": "wx_002"
         },
         {
           "type": "view",
           "name": "🔞后台系统",
-          "url": "yangqiwang.cn/vue-admin/"
+          "url": "http://yangqiwang.cn/vue-admin/"
         }
       ]
     },
@@ -41,7 +41,7 @@
         {
           "type": "view",
           "name": "🚶绑定手机号",
-          "url": "http://yangqiwang.cn/weixin/bindTel.html"
+          "url": "http://yangqiwang.cn/activity/bindTel.html"
         },
         {
           "type": "click",

@@ -1,6 +1,7 @@
 /**
  * Created by qingbiao on 2015-12-20.
  */
+var client = require("../database/database");
 
 var WXConfig = require("../config");
 
@@ -49,6 +50,59 @@ module.exports = {
             else if(msgObj.content == "2") {
 
                 callback.call(scope, this.createResNewsMsg(msgObj));
+
+            }
+
+            else  if(msgObj.content.substring(0,2) == "成绩") {
+                var _this = this,
+                    obj = msgObj.content.split(' '),
+                    name = obj[1];
+
+                if(obj[1]==undefined || name==''){
+                    callback.call(scope, _this.createResTextMsg(msgObj,'请按照格式，回复成绩 姓名查询成绩哦~'));
+                    return false;
+                }
+
+                var post  = ['姓名',name];
+                var con = '';
+
+                client.query('SELECT * FROM score WHERE ?? = ?', post, function(err, result) {
+                    // Neat!
+                    if (err) {
+                        throw err;
+                    }
+                    else {
+                        if(result.length>0){
+                            for(var index = 0 ; index<result.length ; index++){
+                                con+='-----------------------------\n'
+
+                                for(var i in result[index]){
+                                    if(result[index].hasOwnProperty(i) === true) {
+                                        con+= i+'：'+result[index][i]+'\n'
+                                    }
+                                }
+                            }
+                            console.log(con)
+
+                            function ReturnMessage(){
+                                var res = ''
+                                if(result.length==1){
+                                    res = '为您查到以下记录：\n\n' + con
+                                }
+                                else {
+                                    res = '竟然找到了'+result.length+'条记录：\n\n' + con
+                                }
+                                return res;
+                            }
+
+                            callback.call(scope, _this.createResTextMsg(msgObj, '为您查到以下记录：\n\n' + con));
+                        }
+                        else {
+                            callback.call(scope, _this.createResTextMsg(msgObj, '没有找到'+name+'的记录啊~亲'));
+                        }
+                    }
+                })
+
 
             }
 

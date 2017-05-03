@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e1861a7-5280-42f8-a6a7-96acecdb4527" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/error.ejs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/JsSDKTicket" afterPath="$PROJECT_DIR$/conf/JsSDKTicket" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/accessToken" afterPath="$PROJECT_DIR$/conf/accessToken" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ctxpvd.js" afterPath="$PROJECT_DIR$/ctxpvd.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/database.js" afterPath="$PROJECT_DIR$/database/database.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/bindTel.js" afterPath="$PROJECT_DIR$/public/js/bindTel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/activity.js" afterPath="$PROJECT_DIR$/routes/activity.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/common.js" afterPath="$PROJECT_DIR$/routes/common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/weixin.js" afterPath="$PROJECT_DIR$/routes/weixin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/User.js" afterPath="$PROJECT_DIR$/services/User.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/bindTel.ejs" afterPath="$PROJECT_DIR$/views/bindTel.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/weixin/Util.js" afterPath="$PROJECT_DIR$/weixin/Util.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -475,12 +462,12 @@
       <workItem from="1491816680889" duration="32600000" />
       <workItem from="1492598689598" duration="6848000" />
       <workItem from="1493267562823" duration="6796000" />
-      <workItem from="1493364476685" duration="59589000" />
+      <workItem from="1493364476685" duration="59612000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118660000" />
+    <option name="totallyTimeSpent" value="118683000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

@@ -110,9 +110,21 @@ CtxPvd.prototype = {
         extend(this.__params, queries);
     }
 };
-
 function initRouters(app){
+    var bodyParser = require('body-parser');
+    app.use(bodyParser.json({limit: '50mb'}));
+    app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
+    app.all('/*', function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.header('Access-Control-Allow-Headers', 'Content-Type');
+        next();
+    });
+
     app.use('/*',function(req, res, next){
+        console.log('ctxpvd.js /*')
         var excepts = conf.EXCEPTURLS;
         for( var i in excepts){
             var except = excepts[i];
@@ -142,21 +154,29 @@ function initRouters(app){
     /**
      * 微信菜单进入的进行授权判断
      */
-    app.use('/bindTel*',function(req, res, next){
+    app.use('/activity/*',function(req, res, next){
         var openid = req.session.openid;
+        var token = req.session.token;
         console.log("openid exist ? " + openid);
         if(openid){
             next();
         }else {
             var queries = querystring.parse(url.parse(req.url).query);
             console.log("重定向过来的请求");
+            console.log(req.session);
             if (queries["state"]) {
                 var code = queries["code"];
                 console.log("code: "+code);
-                WeiXinUtil.getOpenIdByPageAccessToken(code, function(openid){
+                WeiXinUtil.getOpenIdByPageAccessToken(code, function(openid,access_token){
                     console.log("openid: "+openid);
                     req.session.openid = openid;
-                    next();
+                    req.session.token = access_token;
+                    console.log(req.session);
+                    WeiXinUtil.getUserinfo(openid,token,function (userinfo) {
+                        req.session.userinfo = userinfo;
+                    });
+
+                    next()
                 }, null);
             } else {
                 console.log("进行重定向");

@@ -8,7 +8,7 @@ var MessageHandler = require("../weixin/MessageHandler");
 module.exports = {
 
     "/index\.html": function() {
-
+        console.log('weixin.js index.html')
         if(this.req.method === "GET"){
             var signature = this.get("signature");
             var timestamp = this.get("timestamp");
@@ -43,6 +43,7 @@ module.exports = {
 
     "/bindTel\.html": function(){
         var code = this.get("code");
+        console.log('weixin.js bindTel');
         console.log(code);
         var state = this.get("state");
 

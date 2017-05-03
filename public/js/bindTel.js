@@ -58,12 +58,11 @@ $(function(){
         }
     });
     $('#submit-btn').on('click',function(){
-//            var tel = $('#tel-input').val();
         var tel = trimAll($('#tel-input')[0].value);
         var code = $('#code-input').val();
         if ($('.get-code').data('isClick') === true) {
             $.ajax({
-                url: ctx + '/common/bind.html',
+                url: ctx + '/common/bind',
                 type: 'POST',
                 dataType: 'json',
                 data: {tel: tel,code: code},
@@ -92,6 +91,7 @@ $(function(){
             $('#result-alert').modal('show');
         }
     });
+
 });
 
 //验证手机号码

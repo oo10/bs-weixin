@@ -19,7 +19,6 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 app.use(compression());
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-//app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -32,12 +31,24 @@ app.use(function (req, res, next) {
   next();
 });
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({store: new RedisStore({
-  port: "6379",
-  host: "localhost",
-  db: 0,
-  prefix: "weixinSession:"
-}), secret: 'cqb325',cookie: {maxAge:1800000}, resave: false, saveUninitialized: false}));
+// app.use(session({store: new RedisStore({
+//   port: "6379",
+//   host: "localhost",
+//   db: 0,
+//   prefix: "weixinSession:"
+// }), secret: 'cqb325',cookie: {maxAge:1800000}, resave: false, saveUninitialized: false}));
+
+app.use(session({
+    secret: 'yangqiwang',
+    key: 0,
+    cookie: {
+        secret: true,
+        expires: false
+    },
+    resave: true,
+    saveUninitialized: true
+}));
+
 
 
 //app.use('/admin.*',function(req, res, next) {

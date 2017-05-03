@@ -9,13 +9,11 @@ module.exports = {
      * 绑定手机号码
      */
     "/bindTel\.html": function(){
+        console.log('activity.js bindTel')
         var url = "http://" + this.req.headers["host"] + this.req.originalUrl;
-        console.log(888)
         WeiXinUtil.getJsSDKSignature(url, function(config){
-            console.log('test3')
+            console.log('activity.js config',config)
             this.forward("bindTel", config);
-            console.log('test4')
-
         }, this);
     }
 };

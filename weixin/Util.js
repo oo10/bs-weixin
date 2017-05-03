@@ -67,7 +67,7 @@ module.exports = {
 
         console.log('getURL 授权',url)
         url = url.replace("REDIRECT_URI", redirect_url);
-        url = url.replace("SCOPE", "snsapi_base");
+        url = url.replace("SCOPE", "snsapi_userinfo");
         url = url.replace("STATE", "1");
         console.log('getURL 授权2.0',url)
 
@@ -85,10 +85,11 @@ module.exports = {
         url = url.replace("APPID", WXCONFIG.APPID);
         url = url.replace("SECRET", WXCONFIG.APPSECRET);
         HttpsUtil.httpsPostData(url, "", "POST", function(ret){
+            console.log('获取openid 的 post对象：',ret)
             if(ret) {
                 var json = JSON.parse(ret);
                 if(json.openid){
-                    callback.call(scope, json.openid);
+                    callback.call(scope, json.openid, json.refresh_token);
                 }else{
                     callback.call(scope, null);
                 }
@@ -98,6 +99,33 @@ module.exports = {
         }, null);
     },
 
+    /**
+     * 获取用户信息
+     * @param code
+     * @param callback
+     * @param scope
+     */
+    getUserinfo: function(openid,token,callback,scope){
+        var url = 'https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN';
+        url = url.replace("ACCESS_TOKEN", token);
+        url = url.replace("OPENID", openid);
+        HttpsUtil.httpsPostData(url, "", "POST", function(ret){
+            console.log('获取userInfo 的 post对象：',ret)
+            if(ret) {
+                var json = JSON.parse(ret);
+                if(json){
+                    callback.call(scope, json);
+                }else{
+                    callback.call(scope, null);
+                }
+            }else{
+                callback.call(scope, null);
+            }
+        }, null);
+    },
+
+
+    // https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN
     /**
      * 获取JS API 签名
      * @param url
@@ -119,15 +147,13 @@ module.exports = {
             var str = arr.join("&");
             var signature = sha1(str);
 
-
-            console.log('test1')
             callback.call(scope, {
                 appId: WXCONFIG.APPID,
                 timestamp: time,
                 nonceStr: noncestr,
                 signature: signature
             });
-            console.log('test2')
+            console.log('Util.js getJsSDKSignature')
         }, null);
     },
 
